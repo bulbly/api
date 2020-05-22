@@ -1,0 +1,22 @@
+{
+    "version": 2,   
+    "builds": [
+        {
+            "src": "app.js",    
+            "use":"@now/node-server"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)", 
+            "dest": "app.js",
+            "headers": {         
+                "X-Frame-Options": "DENY",
+                "X-XSS-Protection": "1; mode=block",
+                "X-Content-Type-Options": "nosniff",
+                "Content-Security-Policy": "default-src 'self'",
+                "Feature-Policy": "accelerometer 'none'; camera 'none'; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone 'none'; payment 'none'; usb 'none'"
+              }
+        }
+    ]
+}
